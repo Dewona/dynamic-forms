@@ -12,7 +12,6 @@ import { dictionaryControlsTypes as dictionaryCT} from '../configs/dictionary-co
 
 @Injectable()
 export class ControlService {
-    private apiHost = 'http://localhost:11258'; // Host to web api
     private apiURL = '/api/values';
     headers: Headers = new Headers({ 'Content-Type': 'application/json' });
     options: RequestOptions = new RequestOptions({ headers: this.headers });
