@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Смотри Консоль</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+  
+    <script>
+        function getFormDefs() {
+            $.ajax({
+                url: "/api/formDefs/largeFormDefinition",
+                type: "GET",
+                contentType: "application/json",
+                success: function (defs) {
+                    console.log('form-defs: ', defs);
+                 }
+            });
+        }
+		getFormDefs();
+		
+		function getFormValues() {
+            $.ajax({
+                url: "/api/formValues/largeFormValues",
+                type: "GET",
+                contentType: "application/json",
+                success: function (values) {
+                    console.log('form-values: ', values);
+                 }
+            });
+        }
+		getFormValues();
+  
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<article class="row">
+    <app-dynamic-form [controlValues]="(streem | async)?.values" class="col col-6"
+                        [controlsConfig]="(streem | async)?.definition"
+                        (saveControlsData)="handleControlsData($event)">
+    </app-dynamic-form>
+
+    <section class="col col-6">
+      <div class="border border-warning p-2">
+          <h3 class="text-danger p-1 text-center">
+            Do not use if api has not been run.<br />
+            I did not handle error if api was not started!
+          </h3>
+
+          <button (click)="makeRequests('shortForm')"
+                  class="btn btn-warning mb-2 col col-12 action-buttons"> Create Short Form by Request</button>
+          <button (click)="makeRequests('mediumForm')"
+                  class="btn btn-warning mb-2 col col-12 action-buttons">Create Medium Form by Request</button>
+          <button (click)="makeRequests('largeForm')"
+                  class="btn btn-warning mb-2 col col-12 action-buttons"> Create Large Form by Request</button>
+      </div>
+
+      <br />
+
+      <div class="border border-info p-2">
+        <h3 class="text-info p-1 text-center">
+          I did not have time to use anything other than the switch operator. I know it's not cool.
+        </h3>
+        <button (click)="useConfig('shortForm')"
+                class="btn btn-info mb-2 col col-12 action-buttons"> Create a Short Form using the config</button>
+        <button (click)="useConfig('mediumForm')"
+                class="btn btn-info mb-2 col col-12 action-buttons"> Create a form Medium Form the config</button>
+        <button (click)="useConfig('largeForm')"
+                class="btn btn-info mb-2 col col-12 action-buttons"> Create a form Large Form the config</button>
+      </div>
+
+      <br />
+
+      <div class="col col-12 p-2 border border-danger">
+        <code>{{output}}</code>
+      </div>
+    </section>
+  </article>

@@ -1,0 +1,36 @@
+<article class="container">
+  <nav class="navbar navbar-expand-lg navbar-light">
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item font-weight-bold  mr-2">
+          <a class="nav-link" routerLink="/home">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/expense">
+            Nested Form
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dynamic-form-wrapper">
+            Dynamic-Form-Wrapper
+          </a>
+        </li>
+      </ul>
+
+      <span id="nav-battons" class="float-right mr-3">
+        <a (click)="goBack()">
+          <span class="glyphicon glyphicon-circle-arrow-left nav-buttons"></span>
+        </a>
+
+        <a (click)="goForward()">
+          <span class="glyphicon glyphicon-circle-arrow-right mr-1 nav-buttons"></span>
+        </a>
+      </span>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</article>

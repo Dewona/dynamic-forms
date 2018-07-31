@@ -1,0 +1,22 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="true" class="form-group row ml-1 mr-5">
+    <label [attr.for]="control.key" class="col col-4 font-weight-bold">{{control.label}}</label>
+    <input [formControlName]="control.key"
+           [id]="control.key"
+           [type]="control.controlType"
+           *ngSwitchCase="control.controlType === 'textbox' || control.controlType === 'email'"
+           class="form-control form-control-lg col col-8"
+           [ngClass]="{'is-invalid':!isValid}"/>
+
+    <select [formControlName]="control.key"
+            [id]="control.key"
+            *ngSwitchCase="control.controlType === 'dropdown'"
+            class="form-control form-control-lg col col-8"
+            [ngClass]="{'is-invalid':!isValid}"
+            [value]="control['options'][control.value].key" >
+      <option *ngFor="let opt of control['options']" [value]="opt.key">{{opt.value}}</option>
+    </select>
+
+    <output class="error-message col-12 mt-2 mb-3" *ngIf="!isValid">{{errorMessage}}</output>
+  </div>
+</div>

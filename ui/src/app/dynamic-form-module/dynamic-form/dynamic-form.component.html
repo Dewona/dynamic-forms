@@ -1,0 +1,14 @@
+<article *ngIf="form">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div *ngFor="let control of formControls">
+      <app-control-component [control]="control"
+                             [form]="form">
+      </app-control-component>
+    </div>
+
+    <button type="submit"
+            [disabled]="!form.valid"
+            class="btn btn-primary col col-12 mt-5 action-buttons">Save
+    </button>
+  </form>
+</article>

@@ -1,0 +1,86 @@
+<article class="row">
+    <form [formGroup]="form" class="col col-6">
+      <div formArrayName="expense">
+        <!-- Work Location -->
+        <div *ngFor="let exp of form.controls['expense'].controls; let i = index" [formGroupName]="i">
+          <div class="form-group row ml-1">
+            <label for="from" class="col col-4 font-weight-bold">Work Location:</label>
+
+            <select formControlName="workLocation"
+                    [ngClass]="{'is-invalid':exp.hasError('required', 'workLocation')}"
+                    class="form-control form-control-lg col col-8 ml-4">
+              <option value="" disabled selected hidden>--Select--</option>
+              <option *ngFor="let state of workLocationTypes" [ngValue]="state.key">
+                {{ state.value }}
+              </option>
+            </select>
+
+            <span *ngIf="exp.hasError('required', 'workLocation')"
+                  class="error-message col-12 mt-2 mb-3">'Work Location' is required</span>
+          </div>
+
+          <!-- Date From -->
+          <div class="form-group row ml-1">
+            <label for="from" class="col col-4 font-weight-bold">Date From:</label>
+
+            <input formControlName="from"
+                   id="name"
+                   type="date"
+                   useValueAsDate
+                   [ngClass]="{'is-invalid':exp.hasError('required', 'workLocation')}"
+                   class="form-control form-control-lg col col-8 ml-4">
+
+            <span *ngIf="exp.hasError('required', 'from')"
+                  class="error-message col-12 mt-2 mb-3">'Date From' is required</span>
+          </div>
+
+          <!-- Date To -->
+          <div class="form-group row ml-1">
+            <label for="to" class="col col-4 font-weight-bold">Date To:</label>
+
+            <input formControlName="to"
+                   id="name"
+                   type="date"
+                   useValueAsDate
+                   [ngClass]="{'is-invalid':exp.hasError('required', 'workLocation')}"
+                   class="form-control form-control-lg col col-8 ml-4">
+
+            <span *ngIf="exp.hasError('required', 'to')"
+                  class="error-message col-12 mt-2 mb-3">'Date To' is required</span>
+
+            <output *ngIf="exp.errors && exp.errors.dates"
+                    class="error-message col-12 mt-2 mb-3">{{exp.errors.dates}}</output>
+          </div>
+
+          <!-- Total Amount -->
+          <div class="form-group row ml-1">
+            <label for="totalAmount" class="col col-4 font-weight-bold">Total Amount:</label>
+
+            <input formControlName="totalAmount"
+                   id="totalAmount"
+                   type="number"
+                   [ngClass]="{'is-invalid':exp.hasError('required', 'workLocation')}"
+                   class="form-control form-control-lg col col-8 ml-4">
+
+            <span *ngIf="exp.hasError('required', 'totalAmount')"
+                  class="error-message col-12 mt-2 mb-3">'Total Amount' is required</span>
+
+            <span *ngIf="exp.hasError('min', 'totalAmount')"
+                  class="error-message col-12 mt-2 mb-3">Must be greater than 0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+          <button type="button" (click)="onAddExpense()" class="col col-4 btn btn-info action-buttons ml-4">
+            Add Expense
+          </button>
+
+          <button type="button" (click)="onSubmitForm()" class="col col-4 btn btn-primary action-buttons ml-5">
+            Save
+          </button>
+        </div>
+    </form>
+
+    <code class="col col-6 p-2 border border-danger">{{output}}</code>
+</article>
